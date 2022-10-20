@@ -13247,7 +13247,14 @@
 
 
 <div class="viewcode-block" id="static_has_nans"><a class="viewcode-back" href="../../../functional/ivy/general/has_nans/static_has_nans_container.html#ivy.container.container_methods.static_has_nans">[docs]</a><span class="k">def</span> <span class="nf">static_has_nans</span><span class="p">(</span>
-    <span class="n">x</span><span class="p">:</span> <span class="n">ivy</span><span class="o">.</span><span class="n">Container</span><span class="p">,</span> <span class="n">include_infs</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">leafwise</span><span class="o">=</span><span class="kc">False</span>
+    <span class="bp">self</span><span class="p">:</span> <span class="n">ivy</span><span class="o">.</span><span class="n">Container</span><span class="p">,</span>
+    <span class="o">/</span><span class="p">,</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">include_infs</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">key_chains</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">to_apply</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">prune_unapplied</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">map_sequences</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ivy</span><span class="o">.</span><span class="n">Container</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Determine whether arrays in the container contain any nans, as well as infs</span>
@@ -13259,10 +13266,6 @@
 <span class="sd">        The container to check for nans.</span>
 <span class="sd">    include_infs</span>
 <span class="sd">        Whether to include infs and -infs in the check. Default is True.</span>
-<span class="sd">    leafwise</span>
-<span class="sd">        Whether to apply the check leaf-wise, and return a container of booleans.</span>
-<span class="sd">        Default is False, in which case the check is applied across the entire</span>
-<span class="sd">        container, returning a single boolean.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -13274,7 +13277,14 @@
 
 
 <div class="viewcode-block" id="has_nans"><a class="viewcode-back" href="../../../functional/ivy/general/has_nans/has_nans_container.html#ivy.container.container_methods.has_nans">[docs]</a><span class="k">def</span> <span class="nf">has_nans</span><span class="p">(</span>
-    <span class="bp">self</span><span class="p">:</span> <span class="n">ivy</span><span class="o">.</span><span class="n">Container</span><span class="p">,</span> <span class="o">/</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">include_infs</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">leafwise</span><span class="o">=</span><span class="kc">False</span>
+    <span class="bp">self</span><span class="p">:</span> <span class="n">ivy</span><span class="o">.</span><span class="n">Container</span><span class="p">,</span>
+    <span class="o">/</span><span class="p">,</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">include_infs</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">key_chains</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">to_apply</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">prune_unapplied</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">map_sequences</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ivy</span><span class="o">.</span><span class="n">Container</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Determine whether arrays in the container contain any nans, as well as infs</span>
@@ -13284,15 +13294,10 @@
 <span class="sd">    ----------</span>
 <span class="sd">    include_infs</span>
 <span class="sd">        Whether to include infs and -infs in the check. Default is True.</span>
-<span class="sd">    leafwise</span>
-<span class="sd">        Whether to apply the check leaf-wise, and return a container of booleans.</span>
-<span class="sd">        Default is False, in which case the check is applied across the entire</span>
-<span class="sd">        container, returning a single boolean.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">        Whether the container has any nans, applied either leafwise or across the</span>
-<span class="sd">        entire container.</span>
+<span class="sd">        Whether the container has any nans, applied across the entire container.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">pass</span></div>
 
